@@ -161,7 +161,11 @@ local config = {
     map("v", "K", ":m '<-2<cr>gv=gv", opts)
     map("n", "<leader>Y", "gg\"+yG", opts)
     map("n", "<leader>x", ":!chmod +x %<CR>", opts)
-
+    
+    -- Navigations
+    map("n", "<M-[>", "<cmd>cnext<CR>zz", opts)
+    map("n", "<M-]>", "<cmd>cprev<CR>zz", opts)
+    
     -- Set autocommands
     vim.cmd [[
       augroup packer_conf
