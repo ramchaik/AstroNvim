@@ -86,7 +86,7 @@ if config.enabled.gitsigns then
 end
 
 -- Telescope
-map("n", "<leader>fg", "<cmd>Telescope live_grep --hidden<CR>", opts)
+map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", opts)
 map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opts)
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", opts)
