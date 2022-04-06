@@ -27,8 +27,8 @@ map("n", "<C-Right>", "<cmd>lua require'smart-splits'.resize_right(2)<cr>", opts
 if config.enabled.bufferline then
   map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", opts)
   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", opts)
-  map("n", "}", "<cmd>BufferLineMoveNext<cr>", opts)
-  map("n", "{", "<cmd>BufferLineMovePrev<cr>", opts)
+  -- map("n", "}", "<cmd>BufferLineMoveNext<cr>", opts)
+  -- map("n", "{", "<cmd>BufferLineMovePrev<cr>", opts)
 else
   map("n", "<S-l>", "<cmd>bnext<CR>", opts)
   map("n", "<S-h>", "<cmd>bprevious<CR>", opts)
@@ -86,11 +86,11 @@ if config.enabled.gitsigns then
 end
 
 -- Telescope
-map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", opts)
+map("n", "<leader>fg", "<cmd>Telescope live_grep --hidden<CR>", opts)
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", opts)
 map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", opts)
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", opts)
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
+map("n", "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", opts)
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
@@ -104,6 +104,11 @@ map("n", "<leader>sc", "<cmd>Telescope commands<CR>", opts)
 map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 map("n", "<leader>lR", "<cmd>Telescope lsp_references<CR>", opts)
 map("n", "<leader>lD", "<cmd>Telescope diagnostics<CR>", opts)
+map("n", "<leader>fs", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \"), hidden = true })<CR>", opts)
+map("n", "<leader>fw", "<cmd>Telescope live_grep --hidden<CR>", opts)
+map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand(\"<cword>\"), hidden = true })<CR>", opts)
+map("n", "<leader>fW", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand(\"<cWORD>\"), hidden = true })<CR>\"<cword>\"), hidden = true })<CR>", opts)
+map("n", "<C-p>", "<cmd>Telescope git_files<CR>", opts)
 
 -- LSP
 map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)

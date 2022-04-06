@@ -157,6 +157,10 @@ local config = {
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
+    map("v", "J", ":m '>+1<cr>gv=gv", opts)
+    map("v", "K", ":m '<-2<cr>gv=gv", opts)
+    map("n", "<leader>Y", "gg\"+yG", opts)
+    map("n", "<leader>x", ":!chmod +x %<CR>", opts)
 
     -- Set autocommands
     vim.cmd [[
