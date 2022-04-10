@@ -64,9 +64,9 @@ end
 
 -- Dashboard
 if config.enabled.dashboard then
-  map("n", "<leader>d", "<cmd>Dashboard<CR>", opts)
+  -- map("n", "<leader>d", "<cmd>Dashboard<CR>", opts)
   map("n", "<leader>fn", "<cmd>DashboardNewFile<CR>", opts)
-  map("n", "<leader>db", "<cmd>Dashboard<CR>", opts)
+  -- map("n", "<leader>db", "<cmd>Dashboard<CR>", opts)
   map("n", "<leader>bm", "<cmd>DashboardJumpMarks<CR>", opts)
   map("n", "<leader>sl", "<cmd>SessionLoad<CR>", opts)
   map("n", "<leader>ss", "<cmd>SessionSave<CR>", opts)

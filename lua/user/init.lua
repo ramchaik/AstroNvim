@@ -55,6 +55,7 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+      { "github/copilot.vim" },
       { 
         "ThePrimeagen/harpoon",
         config = function()
@@ -76,6 +77,54 @@ local config = {
               excluded_filetypes = { "harpoon" },
           })
         end,
+      },
+      {
+        "mfussenegger/nvim-dap",
+        config = function()
+          local dap = require('dap')
+          dap.adapters.node2 = {
+            type = 'executable',
+            command = 'node',
+            args = {os.getenv('HOME') .. '/dev/vscode-node-debug2/out/src/nodeDebug.js'},
+          }
+          dap.configurations.javascript = {
+            {
+              name = 'Launch',
+              type = 'node2',
+              request = 'launch',
+              program = '${file}',
+              cwd = vim.fn.getcwd(),
+              sourceMaps = true,
+              protocol = 'inspector',
+              console = 'integratedTerminal',
+            },
+            {
+              -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+              name = 'Attach to process',
+              type = 'node2',
+              request = 'attach',
+              processId = require'dap.utils'.pick_process,
+            },
+          }
+        end
+      },
+      { 
+        "nvim-telescope/telescope-dap.nvim",
+        config = function()
+          require('telescope').load_extension('dap')
+        end
+      },
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+          require("nvim-dap-virtual-text").setup()
+        end
+      },
+      {
+        "rcarriga/nvim-dap-ui",
+        config = function()
+          require("dapui").setup()
+        end
       }
     },
     -- All other entries override the setup() call for default plugins
@@ -199,6 +248,29 @@ local config = {
     map("n", "<leader>tf", "<cmd>lua require(\"harpoon.term\").gotoTerminal(1)<CR>", opts)
     map("n", "<leader>td", "<cmd>lua require(\"harpoon.term\").gotoTerminal(2)<CR>", opts)
     map("n", "<leader>ts", "<cmd>lua require(\"harpoon.term\").gotoTerminal(3)<CR>", opts)
+    
+    -- Debugger
+    map('n', '<leader>db', ':lua require"dap".toggle_breakpoint()<CR>', opts)
+    map('n', '<leader>dB', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+    map('n', '<A-k>', ':lua require"dap".step_out()<CR>', opts)
+    map('n', "<A-l>", ':lua require"dap".step_into()<CR>', opts)
+    map('n', '<A-j>', ':lua require"dap".step_over()<CR>', opts)
+    map('n', '<A-h>', ':lua require"dap".continue()<CR>', opts)
+    map('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>', opts)
+    map('n', '<leader>dk', ':lua require"dap".up()<CR>zz', opts)
+    map('n', '<leader>dj', ':lua require"dap".down()<CR>zz', opts)
+    map('n', '<leader>dc', ':lua require"dap".terminate()<CR>', opts)
+    map('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l', opts)
+    map('n', '<leader>dR', ':lua require"dap".clear_breakpoints()<CR>', opts)
+    map('n', '<leader>de', ':lua require"dap".set_exception_breakpoints({"all"})<CR>', opts)
+    map('n', '<leader>di', ':lua require"dap.ui.widgets".hover()<CR>', opts)
+    map('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>', opts)
+    
+    map('n', '<leader>df', ':Telescope dap frames<CR>', opts)
+    map('n', '<leader>dlb', ':Telescope dap list_breakpoints<CR>', opts)
+    map('n', '<leader>dcg', ':Telescope dap configurations<CR>', opts)
+    map('n', '<leader>dva', ':Telescope dap variables<CR>', opts)
+    map('n', '<leader>dcm', ':Telescope dap commands<CR>', opts)
 
     -- Set autocommands
     vim.cmd [[
