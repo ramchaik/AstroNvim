@@ -35,8 +35,8 @@ else
 end
 
 -- Move text up and down
-map("n", "<A-j>", "<Esc><cmd>m .+1<CR>==gi", opts)
-map("n", "<A-k>", "<Esc><cmd>m .-2<CR>==gi", opts)
+-- map("n", "<A-j>", "<Esc><cmd>m .+1<CR>==gi", opts)
+-- map("n", "<A-k>", "<Esc><cmd>m .-2<CR>==gi", opts)
 
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<CR>", opts)
@@ -164,15 +164,15 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Move text up and down
-map("v", "<A-j>", "<cmd>m .+1<CR>==", opts)
-map("v", "<A-k>", "<cmd>m .-2<CR>==", opts)
+-- map("v", "<A-j>", "<cmd>m .+1<CR>==", opts)
+-- map("v", "<A-k>", "<cmd>m .-2<CR>==", opts)
 
 -- Visual Block --
 -- Move text up and down
-map("x", "J", "<cmd>move '>+1<CR>gv-gv", opts)
-map("x", "K", "<cmd>move '<-2<CR>gv-gv", opts)
-map("x", "<A-j>", "<cmd>move '>+1<CR>gv-gv", opts)
-map("x", "<A-k>", "<cmd>move '<-2<CR>gv-gv", opts)
+-- map("x", "J", "<cmd>move '>+1<CR>gv-gv", opts)
+-- map("x", "K", "<cmd>move '<-2<CR>gv-gv", opts)
+-- map("x", "<A-j>", "<cmd>move '>+1<CR>gv-gv", opts)
+-- map("x", "<A-k>", "<cmd>move '<-2<CR>gv-gv", opts)
 
 -- disable Ex mode:
 map("n", "Q", "<Nop>", opts)

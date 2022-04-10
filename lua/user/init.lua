@@ -232,10 +232,10 @@ local config = {
     map("n", "<leader>Y", "gg\"+yG", opts)
     map("n", "<leader>x", ":!chmod +x %<CR>", opts)
 
-    -- Navigations
-    map("n", "<M-[>", "<cmd>cnext<CR>zz", opts)
-    map("n", "<M-]>", "<cmd>cprev<CR>zz", opts)
-    map("n", "<M-q>", "<cmd>lua require(\"ramchaik.quickfix\").toggle(1)<CR>", opts)
+    -- Quickfix List
+    map("n", "<A-[>", "<cmd>cnext<CR>zz", opts)
+    map("n", "<A-]>", "<cmd>cprev<CR>zz", opts)
+    map("n", "<A-q>", "<cmd>lua require(\"ramchaik.quickfix\").toggle(1)<CR>", opts)
 
     -- Harpoon
     map("n", "<leader>a", "<cmd>lua require(\"harpoon.mark\").add_file()<CR>", opts)
