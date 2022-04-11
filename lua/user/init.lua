@@ -226,6 +226,9 @@ local config = {
     -- Set options
     set.relativenumber = true
 
+    -- Git
+    map("n", "<leader>gd", "<cmd>term git diff<cr>", opts)
+
     -- Set key bindings
     map("v", "J", ":m '>+1<cr>gv=gv", opts)
     map("v", "K", ":m '<-2<cr>gv=gv", opts)

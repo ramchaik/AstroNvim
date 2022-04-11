@@ -82,7 +82,7 @@ if config.enabled.gitsigns then
   map("n", "<leader>gr", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", opts)
   map("n", "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", opts)
   map("n", "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", opts)
-  map("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", opts)
+  -- map("n", "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", opts)
 end
 
 -- Telescope

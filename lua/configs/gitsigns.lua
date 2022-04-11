@@ -33,13 +33,14 @@ function M.config()
       follow_files = true,
     },
     attach_to_untracked = true,
-    current_line_blame = false,
+    current_line_blame = true,
     current_line_blame_opts = {
       virt_text = true,
       virt_text_pos = "eol",
       delay = 1000,
       ignore_whitespace = false,
     },
+    current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
     current_line_blame_formatter_opts = {
       relative_time = false,
     },
