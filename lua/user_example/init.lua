@@ -41,29 +41,6 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-      { "github/copilot.vim" },
-      { 
-        "ThePrimeagen/harpoon",
-        config = function()
-          require("harpoon").setup({
-              nav_first_in_list = true,
-              -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
-              save_on_toggle = false,
-
-              -- saves the harpoon file upon every change. disabling is unrecommended.
-              save_on_change = true,
-
-              -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
-              enter_on_sendcmd = false,
-
-              -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
-              tmux_autoclose_windows = false,
-
-              -- filetypes that you want to prevent from adding to the harpoon list menu.
-              excluded_filetypes = { "harpoon" },
-          })
-        end,
-      },
     },
     -- All other entries override the setup() call for default plugins
     treesitter = {
@@ -204,33 +181,6 @@ local config = {
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>")
 
-    -- Git
-    map("n", "<leader>gd", "<cmd>term git diff<cr>")
-
-    -- General
-    map("v", "J", ":m '>+1<cr>gv=gv")
-    map("v", "K", ":m '<-2<cr>gv=gv")
-    map("n", "<leader>Y", "gg\"+yG")
-    map("n", "<leader>x", ":!chmod +x %<CR>")
-
-    -- Quickfix List
-    map("n", "<A-[>", "<cmd>cnext<CR>zz")
-    map("n", "<A-]>", "<cmd>cprev<CR>zz")
-    map("n", "<A-q>", "<cmd>lua require(\"ramchaik.quickfix\").toggle(1)<CR>")
-
-    -- Harpoon
-    map("n", "<leader>a", "<cmd>lua require(\"harpoon.mark\").add_file()<CR>")
-    map("n", "<C-s>", "<cmd>lua require(\"harpoon.ui\").toggle_quick_menu()<CR>")
-    
-    map("n", "<C-j>", "<cmd>lua require(\"harpoon.ui\").nav_file(1)<CR>")
-    map("n", "<C-k>", "<cmd>lua require(\"harpoon.ui\").nav_file(2)<CR>")
-    map("n", "<C-l>", "<cmd>lua require(\"harpoon.ui\").nav_file(3)<CR>")
-
-    map("n", "<leader>tf", "<cmd>lua require(\"harpoon.term\").gotoTerminal(1)<CR>")
-    map("n", "<leader>td", "<cmd>lua require(\"harpoon.term\").gotoTerminal(2)<CR>")
-    map("n", "<leader>ts", "<cmd>lua require(\"harpoon.term\").gotoTerminal(3)<CR>")
-
-
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", {})
     vim.api.nvim_create_autocmd("BufWritePost", {
@@ -255,5 +205,4 @@ local config = {
   end,
 }
 
-return config
 return config
