@@ -165,12 +165,12 @@ if status_ok then
       end,
       "Undo Stage Hunk",
     }
-    mappings.n["<leader>"].g.d = {
-      function()
-        require("gitsigns").diffthis()
-      end,
-      "Diff",
-    }
+    -- mappings.n["<leader>"].g.d = {
+    --   function()
+    --     require("gitsigns").diffthis()
+    --   end,
+    --   "Diff",
+    -- }
   end
 
   if utils.is_available "nvim-toggleterm.lua" then
@@ -213,7 +213,7 @@ if status_ok then
       end,
       "Lazygit",
     }
-    mappings.n["<leader>"].t.f = { "<cmd>ToggleTerm direction=float<cr>", "Float" }
+    -- mappings.n["<leader>"].t.f = { "<cmd>ToggleTerm direction=float<cr>", "Float" }
     mappings.n["<leader>"].t.h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" }
     mappings.n["<leader>"].t.v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" }
   end
@@ -319,12 +319,12 @@ if status_ok then
       end,
       "Find Old Files",
     }
-    mappings.n["<leader>"].f.w = {
-      function()
-        require("telescope.builtin").live_grep()
-      end,
-      "Find Words",
-    }
+    -- mappings.n["<leader>"].f.w = {
+    --   function()
+    --     require("telescope.builtin").live_grep()
+    --   end,
+    --   "Find Words",
+    -- }
 
     init_table("n", "<leader>", "l")
     mappings.n["<leader>"].l.s = {
