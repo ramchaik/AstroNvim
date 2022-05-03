@@ -2,20 +2,14 @@ local M = {}
 
 function M.config()
   local status_ok, gitsigns = pcall(require, "gitsigns")
-  if not status_ok then
-    return
-  end
-
-  gitsigns.setup(require("core.utils").user_plugin_opts("plugins.gitsigns", {
-    signs = {
-      add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-      change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-      delete = { hl = "GitSignsDelete", text = "▎", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-      topdelete = {
-        hl = "GitSignsDelete",
-        text = "契",
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn",
+  if status_ok then
+    gitsigns.setup(require("core.utils").user_plugin_opts("plugins.gitsigns", {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "▎" },
+        topdelete = { text = "契" },
+        changedelete = { text = "▎" },
       },
       changedelete = {
         hl = "GitSignsChange",
