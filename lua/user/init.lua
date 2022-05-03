@@ -3,6 +3,31 @@ local config = {
   -- Set colorscheme
   colorscheme = "default_theme",
 
+  -- Set dashboard header
+  header = {
+    " ",
+    " ",
+    " ",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣴⣦⣤⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ",
+    "⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⠿⠿⠿⠿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀ ",
+    "⠀⠀⠀⠀⣠⣾⣿⣿⡿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣶⡀⠀⠀⠀⠀ ",
+    "⠀⠀⠀⣴⣿⣿⠟⠁⠀⠀⠀⣶⣶⣶⣶⡆⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣦⠀⠀⠀ ",
+    "⠀⠀⣼⣿⣿⠋⠀⠀⠀⠀⠀⠛⠛⢻⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣧⠀⠀ ",
+    "⠀⢸⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⡇⠀ ",
+    "⠀⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⠀ ",
+    "⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⡟⢹⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⣹⣿⣿⠀ ",
+    "⠀⣿⣿⣷⠀⠀⠀⠀⠀⠀⣰⣿⣿⠏⠀⠀⢻⣿⣿⡄⠀⠀⠀⠀⠀⠀⣿⣿⡿⠀ ",
+    "⠀⢸⣿⣿⡆⠀⠀⠀⠀⣴⣿⡿⠃⠀⠀⠀⠈⢿⣿⣷⣤⣤⡆⠀⠀⣰⣿⣿⠇⠀ ",
+    "⠀⠀⢻⣿⣿⣄⠀⠀⠾⠿⠿⠁⠀⠀⠀⠀⠀⠘⣿⣿⡿⠿⠛⠀⣰⣿⣿⡟⠀⠀ ",
+    "⠀⠀⠀⠻⣿⣿⣧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⠏⠀⠀⠀ ",
+    "⠀⠀⠀⠀⠈⠻⣿⣿⣷⣤⣄⡀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⠟⠁⠀⠀⠀⠀ ",
+    "⠀⠀⠀⠀⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀ ",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠛⠛⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ",
+    " ",
+    " ",
+    " ",
+  },
+
   -- Default theme configuration
   default_theme = {
     diagnostics_style = { italic = true },
@@ -42,8 +67,7 @@ local config = {
       --   end,
       -- },
       { "github/copilot.vim" },
-      { 
-        "ThePrimeagen/harpoon",
+      { "ThePrimeagen/harpoon",
         config = function()
           require("harpoon").setup({
               nav_first_in_list = true,
@@ -75,6 +99,146 @@ local config = {
     packer = {
       compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
     },
+    -- GitSigns Options
+    gitsigns = {
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol",
+        delay = 1000,
+        ignore_whitespace = false,
+      },
+      current_line_blame_formatter_opts = {
+        relative_time = false,
+      }
+    },
+
+    -- Neo Tree
+    ["neo-tree"] = {
+      close_if_last_window = true,
+      popup_border_style = "rounded",
+      enable_git_status = true,
+      enable_diagnostics = false,
+      default_component_configs = {
+        indent = {
+          indent_size = 2,
+          padding = 0,
+          with_markers = true,
+          indent_marker = "│",
+          last_indent_marker = "└",
+          highlight = "NeoTreeIndentMarker",
+          with_expanders = false,
+          expander_collapsed = "",
+          expander_expanded = "",
+          expander_highlight = "NeoTreeExpander",
+        },
+        icon = {
+          folder_closed = "",
+          folder_open = "",
+          folder_empty = "",
+          default = "",
+        },
+        name = {
+          trailing_slash = false,
+          use_git_status_colors = true,
+        },
+        git_status = {
+          symbols = {
+            added = "",
+            deleted = "",
+            modified = "",
+            renamed = "➜",
+            untracked = "★",
+            ignored = "◌",
+            unstaged = "✗",
+            staged = "✓",
+            conflict = "",
+          },
+        },
+      },
+      window = {
+        position = "right",
+        width = 30,
+        mappings = {
+          ["<2-LeftMouse>"] = "open",
+          ["<cr>"] = "open",
+          ["o"] = "open",
+          ["S"] = "open_split",
+          ["s"] = "open_vsplit",
+          ["C"] = "close_node",
+          ["<bs>"] = "navigate_up",
+          ["."] = "set_root",
+          ["H"] = "toggle_hidden",
+          ["R"] = "refresh",
+          ["/"] = "fuzzy_finder",
+          ["f"] = "filter_on_submit",
+          ["<c-x>"] = "clear_filter",
+          ["a"] = "add",
+          ["d"] = "delete",
+          ["r"] = "rename",
+          ["y"] = "copy_to_clipboard",
+          ["x"] = "cut_to_clipboard",
+          ["p"] = "paste_from_clipboard",
+          ["c"] = "copy",
+          ["m"] = "move",
+          ["q"] = "close_window",
+        },
+      },
+      nesting_rules = {},
+      filesystem = {
+        filtered_items = {
+          visible = false,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = {
+            ".DS_Store",
+            "thumbs.db",
+            "node_modules",
+            "__pycache__",
+          },
+        },
+        follow_current_file = true,
+        hijack_netrw_behavior = "open_current",
+        use_libuv_file_watcher = true,
+      },
+      buffers = {
+        show_unloaded = true,
+        window = {
+          mappings = {
+            ["bd"] = "buffer_delete",
+          },
+        },
+      },
+      git_status = {
+        window = {
+          position = "float",
+          mappings = {
+            ["A"] = "git_add_all",
+            ["gu"] = "git_unstage_file",
+            ["ga"] = "git_add_file",
+            ["gr"] = "git_revert_file",
+            ["gc"] = "git_commit",
+            ["gp"] = "git_push",
+            ["gg"] = "git_commit_and_push",
+          },
+        },
+      },
+      event_handlers = {
+        {
+          event = "vim_buffer_enter",
+          handler = function(_)
+            if vim.bo.filetype == "neo-tree" then
+              vim.wo.signcolumn = "auto"
+            end
+          end,
+        },
+      },
+    },
+    bufferline = {
+      options = {
+         mode = "tabs",
+      },
+    },
   },
 
   -- LuaSnip Options
@@ -97,6 +261,30 @@ local config = {
         ["<leader>"] = {
           -- which-key registration table for normal mode, leader prefix
           -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
+          -- Telescope
+          ["fs"] = {
+            function()
+              require("telescope.builtin").live_grep({ hidden = true })
+            end,
+            "Live Grep"
+          },
+          ["fw"] = {
+            function()
+              require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>"), hidden = true })
+            end,
+            "Find word (cword)"
+          },
+          ["fW"] = {
+            function()
+              require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>"), hidden = true })
+            end,
+            "Find WORD (cWORD)"
+          },
+          -- Git
+          ["gd"] = {
+            "<cmd>term git diff<cr>",
+            "Diff"
+          },
         },
       },
     },
@@ -202,10 +390,7 @@ local config = {
     set.relativenumber = true
 
     -- Set key bindings
-    map("n", "<C-s>", ":w!<CR>")
-
-    -- Git
-    map("n", "<leader>gd", "<cmd>term git diff<cr>")
+    -- map("n", "<C-s>", ":w!<CR>")
 
     -- General
     map("v", "J", ":m '>+1<cr>gv=gv")
@@ -221,11 +406,11 @@ local config = {
     -- Harpoon
     map("n", "<leader>a", "<cmd>lua require(\"harpoon.mark\").add_file()<CR>")
     map("n", "<C-s>", "<cmd>lua require(\"harpoon.ui\").toggle_quick_menu()<CR>")
-    
+    ---- Harpoon buffer hotkeys
     map("n", "<C-j>", "<cmd>lua require(\"harpoon.ui\").nav_file(1)<CR>")
     map("n", "<C-k>", "<cmd>lua require(\"harpoon.ui\").nav_file(2)<CR>")
     map("n", "<C-l>", "<cmd>lua require(\"harpoon.ui\").nav_file(3)<CR>")
-
+    ---- Harpoon terminal hotkeys
     map("n", "<leader>tf", "<cmd>lua require(\"harpoon.term\").gotoTerminal(1)<CR>")
     map("n", "<leader>td", "<cmd>lua require(\"harpoon.term\").gotoTerminal(2)<CR>")
     map("n", "<leader>ts", "<cmd>lua require(\"harpoon.term\").gotoTerminal(3)<CR>")
@@ -255,5 +440,4 @@ local config = {
   end,
 }
 
-return config
 return config
